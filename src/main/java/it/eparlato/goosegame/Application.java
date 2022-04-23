@@ -4,12 +4,14 @@ public class Application {
     private final ConsoleInput consoleInput;
     private final ConsoleOutput consoleOutput;
     private CommandParser commandParser;
+    private GooseGame gooseGame;
     boolean running = true;
 
-    public Application(ConsoleInput consoleInput, ConsoleOutput consoleOutput, CommandParser commandParser) {
+    public Application(ConsoleInput consoleInput, ConsoleOutput consoleOutput, CommandParser commandParser, GooseGame gooseGame) {
         this.consoleInput = consoleInput;
         this.consoleOutput = consoleOutput;
         this.commandParser = commandParser;
+        this.gooseGame = gooseGame;
     }
 
     public void run() {
@@ -25,5 +27,9 @@ public class Application {
 
     public void quit() {
         running = false;
+    }
+
+    public GooseGame getGooseGame() {
+        return gooseGame;
     }
 }
