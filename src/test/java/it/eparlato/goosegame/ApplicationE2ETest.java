@@ -1,5 +1,6 @@
 package it.eparlato.goosegame;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -24,6 +25,18 @@ public class ApplicationE2ETest {
         application.run();
 
         assertThatOutputIsEqualTo("Bye.");
+    }
+
+    @Test
+    @Disabled
+    void adds_a_player() throws UnsupportedEncodingException {
+        String commandSequence = "add player Pippo\n";
+
+        setupApplicationWithCommandSequence(commandSequence);
+
+        application.run();
+
+        assertThatOutputIsEqualTo("players: Pippo");
     }
 
     private void setupApplicationWithCommandSequence(String commandSequence) {

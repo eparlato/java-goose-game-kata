@@ -2,10 +2,15 @@ package it.eparlato.goosegame;
 
 public class CommandParser {
     public ApplicationCommand getCommandFor(String userInput) {
-        if("exit".equals(userInput)) {
+        if ("exit".equals(userInput)) {
             return new ExitCommand();
         }
 
-        return null;
+        if (userInput.startsWith("add player ")) {
+           String playerName = userInput.split("add player ")[1];
+           return new AddPlayerCommand(playerName);
+        }
+
+        return new NullCommand();
     }
 }
