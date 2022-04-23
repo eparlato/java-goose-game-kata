@@ -16,7 +16,7 @@ public class Application {
 
         while(running) {
             String userInput = consoleInput.getUserInput();
-            ApplicationCommand command = commandParser.getCommandFor(userInput);
+            ApplicationCommand command = commandParser.buildCommandFromInput(userInput);
             command.executeOn(this);
         }
 
