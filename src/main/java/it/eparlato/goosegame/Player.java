@@ -9,6 +9,10 @@ public class Player {
         this.playerName = playerName;
     }
 
+    public String name() {
+        return playerName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
