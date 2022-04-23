@@ -11,18 +11,31 @@ import java.nio.charset.StandardCharsets;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ApplicationE2ETest {
+
+    private Application application;
+    private ByteArrayOutputStream baos;
+
     @Test
     void quits_when_user_writes_exit() throws UnsupportedEncodingException {
-        String userInput = "exit\n";
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        CommandParser commandParser = new CommandParser();
+        String commandSequence = "exit\n";
 
-        ConsoleInput consoleInput = new ConsoleInput(new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8)));
-        ConsoleOutput consoleOutput = new ConsoleOutput(new PrintStream(baos));
-        Application application = new Application(consoleInput, consoleOutput, commandParser);
+        setupApplicationWithCommandSequence(commandSequence);
 
         application.run();
 
-        assertThat(baos.toString("UTF-8")).isEqualTo("Bye.");
+        assertThatOutputIsEqualTo("Bye.");
+    }
+
+    private void setupApplicationWithCommandSequence(String commandSequence) {
+        baos = new ByteArrayOutputStream();
+        CommandParser commandParser = new CommandParser();
+
+        ConsoleInput consoleInput = new ConsoleInput(new ByteArrayInputStream(commandSequence.getBytes(StandardCharsets.UTF_8)));
+        ConsoleOutput consoleOutput = new ConsoleOutput(new PrintStream(baos));
+        application = new Application(consoleInput, consoleOutput, commandParser);
+    }
+
+    private void assertThatOutputIsEqualTo(String expectedOutput) throws UnsupportedEncodingException {
+        assertThat(baos.toString("UTF-8")).isEqualTo(expectedOutput);
     }
 }
