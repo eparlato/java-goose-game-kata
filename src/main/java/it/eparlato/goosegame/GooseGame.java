@@ -5,18 +5,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GooseGame {
-    private List<Player> players = new ArrayList<>();
-    private String status;
+    private final List<Player> players = new ArrayList<>();
 
-    public void addPlayer(Player player) {
+    public String addPlayer(Player player) {
         players.add(player);
 
         List<String> playerNames = players.stream().map(Player::name).collect(Collectors.toList());
 
-        status = String.format("players: %s", String.join(", ", playerNames));
-    }
-
-    public String status() {
-        return status;
+        return String.format("players: %s", String.join(", ", playerNames));
     }
 }

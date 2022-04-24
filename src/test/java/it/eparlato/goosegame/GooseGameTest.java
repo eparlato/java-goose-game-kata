@@ -15,16 +15,17 @@ class GooseGameTest {
 
     @Test
     void adds_a_player() {
-        game.addPlayer(new Player("Bar"));
+        String status = game.addPlayer(new Player("Bar"));
 
-        assertThat(game.status()).isEqualTo("players: Bar");
+        assertThat(status).isEqualTo("players: Bar");
     }
 
     @Test
-    void adds_two_players() {
+    void adds_three_players() {
         game.addPlayer(new Player("Anakin"));
-        game.addPlayer(new Player("Obiwan"));
+        game.addPlayer(new Player("Yoda"));
+        String status = game.addPlayer(new Player("Obiwan"));
 
-        assertThat(game.status()).isEqualTo("players: Anakin, Obiwan");
+        assertThat(status).isEqualTo("players: Anakin, Yoda, Obiwan");
     }
 }
