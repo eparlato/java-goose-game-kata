@@ -12,7 +12,10 @@ public class AddPlayerCommand implements  ApplicationCommand {
     @Override
     public void executeOn(Application application) {
         GooseGame gooseGame = application.getGooseGame();
-        gooseGame.addPlayer(new Player(playerName));
+
+        String response = gooseGame.addPlayer(new Player(playerName));
+
+        application.setGooseGameResponse(response);
     }
 
     @Override

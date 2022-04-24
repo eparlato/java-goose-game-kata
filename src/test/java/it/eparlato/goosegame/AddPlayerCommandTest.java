@@ -3,8 +3,7 @@ package it.eparlato.goosegame;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 class AddPlayerCommandTest {
     private final GooseGame gooseGame = mock(GooseGame.class);
@@ -22,5 +21,19 @@ class AddPlayerCommandTest {
         command.executeOn(application);
 
         verify(gooseGame).addPlayer(new Player("Foo"));
+    }
+
+    @Test
+    void saves_GooseGame_command_response_on_Application() {
+        ApplicationCommand command = new AddPlayerCommand("Player Name");
+
+        // TODO: this is a smell, it would be better not to access to GooseGame from the command...
+        Application application = mock(Application.class);
+        when(application.getGooseGame()).thenReturn(gooseGame);
+        when(gooseGame.addPlayer(new Player("Player Name"))).thenReturn("players: Player Name");
+
+        command.executeOn(application);
+
+        verify(application).setGooseGameResponse("players: Player Name");
     }
 }

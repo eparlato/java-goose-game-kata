@@ -12,6 +12,6 @@ public class ConsoleInput {
     }
 
     public String getUserInput() {
-        return scanner.next();
+        return scanner.nextLine();
     }
 }

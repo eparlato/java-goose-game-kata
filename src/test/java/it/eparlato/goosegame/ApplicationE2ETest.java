@@ -28,16 +28,20 @@ public class ApplicationE2ETest {
     }
 
     @Test
-    @Disabled
-    void adds_a_player() throws UnsupportedEncodingException {
-        String commandSequence = "add player Pippo\n";
+    void adds_players() throws UnsupportedEncodingException {
+        String commandSequence =
+                "add player Pippo\n" +
+                "add player Pluto\n" +
+                "exit\n";
 
         setupApplicationWithCommandSequence(commandSequence);
 
         application.run();
 
-        assertThatOutputIsEqualTo("players: Pippo");
+        assertThatOutputContains("players: Pippo");
+        assertThatOutputContains("players: Pippo, Pluto");
     }
+
 
     private void setupApplicationWithCommandSequence(String commandSequence) {
         baos = new ByteArrayOutputStream();
@@ -50,5 +54,9 @@ public class ApplicationE2ETest {
 
     private void assertThatOutputIsEqualTo(String expectedOutput) throws UnsupportedEncodingException {
         assertThat(baos.toString("UTF-8")).isEqualTo(expectedOutput);
+    }
+
+    private void assertThatOutputContains(String output) throws UnsupportedEncodingException {
+        assertThat(baos.toString("UTF-8")).contains(output);
     }
 }
