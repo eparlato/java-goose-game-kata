@@ -1,11 +1,12 @@
 package it.eparlato.goosegame;
 
 public class Application {
+    public static final String EXIT_MESSAGE = "Bye.";
     private final ConsoleInput consoleInput;
     private final ConsoleOutput consoleOutput;
     private final CommandParser commandParser;
     private final GooseGame gooseGame;
-    boolean running = true;
+    private boolean running = true;
 
     public Application(ConsoleInput consoleInput, ConsoleOutput consoleOutput, CommandParser commandParser, GooseGame gooseGame) {
         this.consoleInput = consoleInput;
@@ -15,19 +16,17 @@ public class Application {
     }
 
     public void run() {
-
         while(running) {
             String userInput = consoleInput.getUserInput();
             ApplicationCommand command = commandParser.buildCommandFromInput(userInput);
 
             command.executeOn(this);
         }
-
-        consoleOutput.show("Bye.");
     }
 
     public void quit() {
         running = false;
+        consoleOutput.show(EXIT_MESSAGE);
     }
 
     public GooseGame getGooseGame() {

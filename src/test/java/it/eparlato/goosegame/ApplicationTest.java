@@ -6,13 +6,15 @@ import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.*;
 
 public class ApplicationTest {
+    private final ConsoleInput consoleInput = mock(ConsoleInput.class);
     private final ConsoleOutput consoleOutput = mock(ConsoleOutput.class);
+    private final CommandParser commandParser = mock(CommandParser.class);
     private final GooseGame gooseGame = mock(GooseGame.class);
     private Application application;
 
     @BeforeEach
     void setUp() {
-        application = new Application(null, consoleOutput, null, gooseGame);
+        application = new Application(consoleInput, consoleOutput, commandParser, gooseGame);
     }
 
     @Test
@@ -27,5 +29,16 @@ public class ApplicationTest {
 
         verify(gooseGame).addPlayer(aNewPlayer);
         verify(consoleOutput).show(response);
+    }
+
+    @Test
+    void quits_itself_and_show_a_goodbye_message() {
+        application.quit();
+
+        application.run();
+
+        verify(consoleInput, never()).getUserInput();
+        verify(commandParser, never()).buildCommandFromInput(anyString());
+        verify(consoleOutput).show(Application.EXIT_MESSAGE);
     }
 }
