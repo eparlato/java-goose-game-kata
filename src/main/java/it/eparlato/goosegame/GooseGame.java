@@ -8,10 +8,16 @@ public class GooseGame {
     private final List<Player> players = new ArrayList<>();
 
     public String addPlayer(Player player) {
+        if (players.contains(player)) {
+           return String.format("%s: already existing player", player.name());
+        }
+
         players.add(player);
 
-        List<String> playerNames = players.stream().map(Player::name).collect(Collectors.toList());
+        return String.format("players: %s", String.join(", ", getPlayerNames()));
+    }
 
-        return String.format("players: %s", String.join(", ", playerNames));
+    private List<String> getPlayerNames() {
+        return players.stream().map(Player::name).collect(Collectors.toList());
     }
 }

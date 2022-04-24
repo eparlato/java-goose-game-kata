@@ -42,6 +42,20 @@ public class ApplicationE2ETest {
         assertThatOutputContains("players: Pippo, Pluto");
     }
 
+    @Test
+    void duplicated_player() throws UnsupportedEncodingException {
+        String commandSequence =
+                "add player Pippo\n" +
+                "add player Pippo\n" +
+                "exit\n";
+
+        setupApplicationWithCommandSequence(commandSequence);
+
+        application.run();
+
+        assertThatOutputContains("players: Pippo");
+        assertThatOutputContains("Pippo: already existing player");
+    }
 
     private void setupApplicationWithCommandSequence(String commandSequence) {
         baos = new ByteArrayOutputStream();
