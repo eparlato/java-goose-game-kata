@@ -6,7 +6,6 @@ public class Application {
     private final CommandParser commandParser;
     private final GooseGame gooseGame;
     boolean running = true;
-    private String gooseGameResponse = "";
 
     public Application(ConsoleInput consoleInput, ConsoleOutput consoleOutput, CommandParser commandParser, GooseGame gooseGame) {
         this.consoleInput = consoleInput;
@@ -22,8 +21,6 @@ public class Application {
             ApplicationCommand command = commandParser.buildCommandFromInput(userInput);
 
             command.executeOn(this);
-
-            consoleOutput.show(gooseGameResponse);
         }
 
         consoleOutput.show("Bye.");
@@ -37,7 +34,8 @@ public class Application {
         return gooseGame;
     }
 
-    public void setGooseGameResponse(String response) {
-        this.gooseGameResponse = response;
+    public void addPlayerWithName(String playerName) {
+        String response = gooseGame.addPlayer(new Player(playerName));
+        consoleOutput.show(response);
     }
 }

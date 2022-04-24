@@ -3,7 +3,7 @@ package it.eparlato.goosegame;
 import java.util.Objects;
 
 public class AddPlayerCommand implements  ApplicationCommand {
-    private String playerName;
+    private final String playerName;
 
     public AddPlayerCommand(String playerName) {
         this.playerName = playerName;
@@ -11,11 +11,7 @@ public class AddPlayerCommand implements  ApplicationCommand {
 
     @Override
     public void executeOn(Application application) {
-        GooseGame gooseGame = application.getGooseGame();
-
-        String response = gooseGame.addPlayer(new Player(playerName));
-
-        application.setGooseGameResponse(response);
+        application.addPlayerWithName(playerName);
     }
 
     @Override
