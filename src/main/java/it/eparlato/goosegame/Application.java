@@ -8,7 +8,8 @@ public class Application {
     private final GooseGame gooseGame;
     private boolean running = true;
 
-    public Application(ConsoleInput consoleInput, ConsoleOutput consoleOutput, CommandParser commandParser, GooseGame gooseGame) {
+    public Application(ConsoleInput consoleInput, ConsoleOutput consoleOutput, CommandParser commandParser,
+                       GooseGame gooseGame) {
         this.consoleInput = consoleInput;
         this.consoleOutput = consoleOutput;
         this.commandParser = commandParser;
@@ -36,5 +37,12 @@ public class Application {
     public void addPlayerWithName(String playerName) {
         String response = gooseGame.addPlayer(new Player(playerName));
         consoleOutput.show(response);
+    }
+
+    public static void main(String[] args) {
+        Application application = new Application(new ConsoleInput(System.in), new ConsoleOutput(System.out),
+                new CommandParser(), new GooseGame());
+
+        application.run();
     }
 }
