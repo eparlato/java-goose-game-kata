@@ -24,7 +24,7 @@ public class ApplicationE2ETest {
 
         application.run();
 
-        assertThatOutputIsEqualTo("Bye.");
+        assertThatOutputContains("Bye.");
     }
 
     @Test
@@ -50,10 +50,6 @@ public class ApplicationE2ETest {
         ConsoleInput consoleInput = new ConsoleInput(new ByteArrayInputStream(commandSequence.getBytes(StandardCharsets.UTF_8)));
         ConsoleOutput consoleOutput = new ConsoleOutput(new PrintStream(baos));
         application = new Application(consoleInput, consoleOutput, commandParser, new GooseGame());
-    }
-
-    private void assertThatOutputIsEqualTo(String expectedOutput) throws UnsupportedEncodingException {
-        assertThat(baos.toString("UTF-8")).isEqualTo(expectedOutput);
     }
 
     private void assertThatOutputContains(String output) throws UnsupportedEncodingException {

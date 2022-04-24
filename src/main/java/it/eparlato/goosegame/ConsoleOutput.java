@@ -10,6 +10,6 @@ public class ConsoleOutput {
     }
 
     public void show(String output) {
-        printStream.print(output);
+        printStream.println(output);
     }
 }
