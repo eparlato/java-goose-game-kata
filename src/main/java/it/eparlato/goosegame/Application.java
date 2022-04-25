@@ -49,6 +49,10 @@ public class Application {
     public void movePlayer(String playerName, DiceRoll diceRoll) {
         String response = gooseGame.movePlayer(playerName, diceRoll);
         consoleOutput.show(response);
+
+        if (gooseGame.isOver()) {
+            quit();
+        }
     }
 
     public static void main(String[] args) {

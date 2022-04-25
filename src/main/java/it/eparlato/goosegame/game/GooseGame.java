@@ -39,4 +39,7 @@ public class GooseGame {
         return new ArrayList<>(playersMap.keySet());
     }
 
+    public boolean isOver() {
+        return false;
+    }
 }

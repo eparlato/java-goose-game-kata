@@ -49,7 +49,7 @@ As a player, I want to move the marker on the board to make the game progress
    ```
 
 ### 3. Win
-As a player, I win the game if I land on space "63"
+   As a player, I win the game if I land on space "63"
 
 **Scenarios:**
 1. Victory

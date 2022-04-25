@@ -63,4 +63,16 @@ public class ApplicationTest {
         verify(commandParser, never()).buildCommandFromInput(anyString());
         verify(consoleOutput).show(Application.EXIT_MESSAGE);
     }
+
+    @Test
+    void quit_itself_when_GooseGame_is_over_after_a_move() {
+        when(gooseGame.isOver()).thenReturn(true);
+
+        application.movePlayer("aPleyer", new DiceRoll(2, 1));
+
+        application.run();
+
+        verify(consoleInput, never()).getUserInput();
+        verify(commandParser, never()).buildCommandFromInput(anyString());
+    }
 }
