@@ -31,7 +31,7 @@ public class ApplicationTest {
 
         when(gooseGame.addPlayer(aNewPlayer)).thenReturn(response);
 
-        application.addPlayerWithName(playerName);
+        application.addPlayer(aNewPlayer);
 
         verify(gooseGame).addPlayer(aNewPlayer);
         verify(consoleOutput).show(response);
@@ -50,7 +50,7 @@ public class ApplicationTest {
         when(gooseGame.movePlayer(aNewPlayer, diceRoll))
                 .thenReturn(aResponse);
 
-        application.movePlayer(playerName, aValueForFirstDice, aValueForSecondDice);
+        application.movePlayer(aNewPlayer, diceRoll);
 
         verify(gooseGame).movePlayer(aNewPlayer, diceRoll);
         verify(consoleOutput).show(aResponse);

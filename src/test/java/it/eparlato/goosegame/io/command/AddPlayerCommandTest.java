@@ -1,8 +1,7 @@
 package it.eparlato.goosegame.io.command;
 
 import it.eparlato.goosegame.Application;
-import it.eparlato.goosegame.io.command.AddPlayerCommand;
-import it.eparlato.goosegame.io.command.ApplicationCommand;
+import it.eparlato.goosegame.game.Player;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.mock;
@@ -19,6 +18,6 @@ class AddPlayerCommandTest {
 
         command.executeOn(application);
 
-        verify(application).addPlayerWithName(aPlayerName);
+        verify(application).addPlayer(new Player(aPlayerName));
     }
 }

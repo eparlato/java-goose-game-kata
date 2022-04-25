@@ -1,9 +1,10 @@
 package it.eparlato.goosegame.io.command;
 
 import it.eparlato.goosegame.Application;
+import it.eparlato.goosegame.game.DiceRoll;
+import it.eparlato.goosegame.game.Player;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -19,6 +20,7 @@ class MovePlayerCommandTest {
 
         command.executeOn(application);
 
-        verify(application).movePlayer(playerName, firstDiceValue, secondDiceValue);
+        verify(application).movePlayer(new Player(playerName),
+                new DiceRoll(firstDiceValue, secondDiceValue));
     }
 }

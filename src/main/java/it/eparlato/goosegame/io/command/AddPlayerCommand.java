@@ -1,6 +1,7 @@
 package it.eparlato.goosegame.io.command;
 
 import it.eparlato.goosegame.Application;
+import it.eparlato.goosegame.game.Player;
 
 import java.util.Objects;
 
@@ -13,7 +14,7 @@ public class AddPlayerCommand implements  ApplicationCommand {
 
     @Override
     public void executeOn(Application application) {
-        application.addPlayerWithName(playerName);
+        application.addPlayer(new Player(playerName));
     }
 
     @Override

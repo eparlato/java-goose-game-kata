@@ -42,14 +42,13 @@ public class Application {
         return gooseGame;
     }
 
-    public void addPlayerWithName(String playerName) {
-        String response = gooseGame.addPlayer(new Player(playerName));
+    public void addPlayer(Player player) {
+        String response = gooseGame.addPlayer(player);
         consoleOutput.show(response);
     }
 
-    public void movePlayer(String playerName, int firstDiceValue, int secondDiceValue) {
-        String response = gooseGame.movePlayer(new Player(playerName),
-                new DiceRoll(firstDiceValue, secondDiceValue));
+    public void movePlayer(Player player, DiceRoll diceRoll) {
+        String response = gooseGame.movePlayer(player, diceRoll);
         consoleOutput.show(response);
     }
 
