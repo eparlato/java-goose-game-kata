@@ -2,7 +2,6 @@ package it.eparlato.goosegame;
 
 import it.eparlato.goosegame.game.DiceRoll;
 import it.eparlato.goosegame.game.GooseGame;
-import it.eparlato.goosegame.game.Player;
 import it.eparlato.goosegame.io.ConsoleInput;
 import it.eparlato.goosegame.io.ConsoleOutput;
 import it.eparlato.goosegame.io.command.CommandParser;
@@ -42,16 +41,15 @@ public class ApplicationTest {
         int aValueForFirstDice = 5;
         int aValueForSecondDice = 5;
 
-        Player aNewPlayer = new Player(playerName);
         DiceRoll diceRoll = new DiceRoll(aValueForFirstDice, aValueForSecondDice);
         String aResponse = "aPlayerName rolls 5, 5. aPlayerName moves from Start to 10";
 
-        when(gooseGame.movePlayer(aNewPlayer, diceRoll))
+        when(gooseGame.movePlayer(playerName, diceRoll))
                 .thenReturn(aResponse);
 
-        application.movePlayer(aNewPlayer, diceRoll);
+        application.movePlayer(playerName, diceRoll);
 
-        verify(gooseGame).movePlayer(aNewPlayer, diceRoll);
+        verify(gooseGame).movePlayer(playerName, diceRoll);
         verify(consoleOutput).show(aResponse);
     }
 

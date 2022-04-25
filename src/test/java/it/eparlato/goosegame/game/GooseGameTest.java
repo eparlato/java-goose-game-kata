@@ -1,7 +1,6 @@
 package it.eparlato.goosegame.game;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -36,5 +35,21 @@ class GooseGameTest {
         String response = game.addPlayer("Pluto");
 
         assertThat(response).isEqualTo("Pluto: already existing player");
+    }
+
+    @Test
+    void moves_a_player_from_start_to_a_new_position() {
+        game.addPlayer("Paperino");
+
+        String response = game.movePlayer("Paperino", new DiceRoll(4, 4));
+
+        assertThat(response).isEqualTo("Paperino rolls 4, 4. Paperino moves from Start to 8");
+    }
+
+    @Test
+    void returns_an_error_message_when_we_try_to_move_a_player_that_does_not_exist() {
+        String response = game.movePlayer("Paperino", new DiceRoll(4, 4));
+
+        assertThat(response).isEqualTo("Player Paperino does not exist. Add it to the Game first.");
     }
 }

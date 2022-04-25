@@ -4,7 +4,6 @@ import it.eparlato.goosegame.game.GooseGame;
 import it.eparlato.goosegame.io.ConsoleInput;
 import it.eparlato.goosegame.io.ConsoleOutput;
 import it.eparlato.goosegame.io.command.CommandParser;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -62,9 +61,10 @@ public class ApplicationE2ETest {
     }
 
     @Test
-    @Disabled
     void move_a_player() throws UnsupportedEncodingException {
         String commandSequence =
+                "add player Pippo\n" +
+                "add player Pluto\n" +
                 "move Pippo 4, 2\n" +
                 "move Pluto 2, 2\n" +
                 "move Pippo 2, 3\n" +

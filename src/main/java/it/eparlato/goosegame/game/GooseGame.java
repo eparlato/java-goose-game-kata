@@ -18,8 +18,21 @@ public class GooseGame {
         return String.format("players: %s", String.join(", ", getPlayerNames()));
     }
 
-    public String movePlayer(Player player, DiceRoll diceRoll) {
-        return "";
+    public String movePlayer(String playerName, DiceRoll diceRoll) {
+        if (!playersMap.containsKey(playerName)) {
+            return String.format("Player %s does not exist. Add it to the Game first.", playerName);
+        }
+
+        Player player = playersMap.get(playerName);
+
+        player.increasePositionBy(diceRoll.sumOfDiceValues());
+
+        Position previousPosition = player.getPreviousPosition();
+        Position currentPosition = player.getCurrentPosition();
+
+        return String.format("%s rolls %d, %d. %s moves from %s to %s",
+                player.name(), diceRoll.firstDiceValue(), diceRoll.secondDiceValue(),
+                player.name(), previousPosition.tagValue(), currentPosition.tagValue());
     }
 
     private List<String> getPlayerNames() {

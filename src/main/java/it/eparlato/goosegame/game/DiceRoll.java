@@ -23,4 +23,16 @@ public class DiceRoll {
     public int hashCode() {
         return Objects.hash(firstDiceValue, secondDiceValue);
     }
+
+    public int sumOfDiceValues() {
+        return firstDiceValue + secondDiceValue;
+    }
+
+    public int firstDiceValue() {
+        return firstDiceValue;
+    }
+
+    public int secondDiceValue() {
+        return secondDiceValue;
+    }
 }

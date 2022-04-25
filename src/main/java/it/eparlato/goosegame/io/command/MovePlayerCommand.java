@@ -2,7 +2,6 @@ package it.eparlato.goosegame.io.command;
 
 import it.eparlato.goosegame.Application;
 import it.eparlato.goosegame.game.DiceRoll;
-import it.eparlato.goosegame.game.Player;
 
 import java.util.Objects;
 
@@ -19,7 +18,7 @@ public class MovePlayerCommand implements ApplicationCommand {
 
     @Override
     public void executeOn(Application application) {
-        application.movePlayer(new Player(playerName), new DiceRoll(firstDiceValue, secondDiceValue));
+        application.movePlayer(playerName, new DiceRoll(firstDiceValue, secondDiceValue));
     }
 
     @Override

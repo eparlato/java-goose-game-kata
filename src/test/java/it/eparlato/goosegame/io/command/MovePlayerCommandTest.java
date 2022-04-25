@@ -2,14 +2,13 @@ package it.eparlato.goosegame.io.command;
 
 import it.eparlato.goosegame.Application;
 import it.eparlato.goosegame.game.DiceRoll;
-import it.eparlato.goosegame.game.Player;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 class MovePlayerCommandTest {
-    private Application application = mock(Application.class);
+    private final Application application = mock(Application.class);
 
     @Test
     void invokes_movePlayer_route_on_Application() {
@@ -20,7 +19,7 @@ class MovePlayerCommandTest {
 
         command.executeOn(application);
 
-        verify(application).movePlayer(new Player(playerName),
+        verify(application).movePlayer(playerName,
                 new DiceRoll(firstDiceValue, secondDiceValue));
     }
 }

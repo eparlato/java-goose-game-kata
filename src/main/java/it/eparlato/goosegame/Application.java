@@ -1,11 +1,10 @@
 package it.eparlato.goosegame;
 
 import it.eparlato.goosegame.game.DiceRoll;
-import it.eparlato.goosegame.io.command.ApplicationCommand;
 import it.eparlato.goosegame.game.GooseGame;
-import it.eparlato.goosegame.game.Player;
 import it.eparlato.goosegame.io.ConsoleInput;
 import it.eparlato.goosegame.io.ConsoleOutput;
+import it.eparlato.goosegame.io.command.ApplicationCommand;
 import it.eparlato.goosegame.io.command.CommandParser;
 
 public class Application {
@@ -47,8 +46,8 @@ public class Application {
         consoleOutput.show(response);
     }
 
-    public void movePlayer(Player player, DiceRoll diceRoll) {
-        String response = gooseGame.movePlayer(player, diceRoll);
+    public void movePlayer(String playerName, DiceRoll diceRoll) {
+        String response = gooseGame.movePlayer(playerName, diceRoll);
         consoleOutput.show(response);
     }
 
