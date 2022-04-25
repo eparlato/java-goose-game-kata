@@ -85,14 +85,31 @@ class GooseGameTest {
 
         game.addPlayer(playerName);
 
-        game.movePlayer(playerName, new DiceRoll(6, 6));
-        game.movePlayer(playerName, new DiceRoll(6, 6));
-        game.movePlayer(playerName, new DiceRoll(6, 6));
-        game.movePlayer(playerName, new DiceRoll(6, 6));
-        game.movePlayer(playerName, new DiceRoll(6, 6));
+        movePlayerToPosition60(playerName);
         String response = game.movePlayer(playerName, winningDiceRoll);
 
         assertThat(game.isOver()).isTrue();
         assertThat(response).isEqualTo("Pippo rolls 1, 2. Pippo moves from 60 to 63. Pippo Wins!!");
+    }
+
+    @Test
+    void shows_a_message_if_the_player_bounces() {
+        String playerName = "Pippo";
+        DiceRoll bouncingDiceRoll = new DiceRoll(2, 3);
+        String playerBouncesMessage= "Pippo rolls 3, 2. Pippo moves from 60 to 63. Pippo bounces! Pippo returns to 61";
+        when(messageFactory.buildPlayerBouncesMessageFor(new Player(playerName), bouncingDiceRoll)).thenReturn(playerBouncesMessage);
+        game.addPlayer(playerName);
+        movePlayerToPosition60(playerName);
+        String response = game.movePlayer(playerName, bouncingDiceRoll);
+
+        assertThat(response).isEqualTo("Pippo rolls 3, 2. Pippo moves from 60 to 63. Pippo bounces! Pippo returns to 61");
+    }
+
+    private void movePlayerToPosition60(String playerName) {
+        game.movePlayer(playerName, new DiceRoll(6, 6));
+        game.movePlayer(playerName, new DiceRoll(6, 6));
+        game.movePlayer(playerName, new DiceRoll(6, 6));
+        game.movePlayer(playerName, new DiceRoll(6, 6));
+        game.movePlayer(playerName, new DiceRoll(6, 6));
     }
 }

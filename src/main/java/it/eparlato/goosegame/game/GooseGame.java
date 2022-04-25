@@ -36,7 +36,7 @@ public class GooseGame {
             return responseFactory.buildWinningMessageFor(player, diceRoll);
         }
 
-        if(player.hasBounced()) {
+        if (player.hasBounced()) {
             return responseFactory.buildPlayerBouncesMessageFor(player, diceRoll);
         }
 
