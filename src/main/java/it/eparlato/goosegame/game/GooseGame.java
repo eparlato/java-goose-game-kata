@@ -17,11 +17,12 @@ public class GooseGame {
         return String.format("players: %s", String.join(", ", getPlayerNames()));
     }
 
+    public String movePlayer(Player player, DiceRoll diceRoll) {
+        return "";
+    }
+
     private List<String> getPlayerNames() {
         return players.stream().map(Player::name).collect(Collectors.toList());
     }
 
-    public String movePlayer(Player playerName, int firstDiceValue, int secondDiceValue) {
-        return "";
-    }
 }
