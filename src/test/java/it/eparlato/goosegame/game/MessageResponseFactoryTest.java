@@ -29,4 +29,35 @@ class MessageResponseFactoryTest {
         String expected = "players: Pippo, Pluto, Paperino";
         assertThat(responseFactory.listOfPlayersMessage(players)).isEqualTo(expected);
     }
+
+    @Test
+    void builds_player_not_existing_message() {
+        String playerName = "Pluto";
+
+        String expected = "Player Pluto does not exist. Add it to the Game first.";
+        assertThat(responseFactory.playerNotExistingMessage(playerName)).isEqualTo(expected);
+    }
+
+    @Test
+    void builds_player_move_message() {
+        Player player = new Player("Paperino");
+        DiceRoll diceRoll = new DiceRoll(4, 5);
+
+        player.increasePositionBy(diceRoll.sumOfDiceValues());
+
+        String expected = "Paperino rolls 4, 5. Paperino moves from Start to 9";
+        assertThat(responseFactory.buildMoveMessageFrom(player, diceRoll)).isEqualTo(expected);
+    }
+
+    @Test
+    void builds_player_wins_message() {
+        Player player = new Player("Paperino");
+        DiceRoll diceRoll = new DiceRoll(4, 5);
+
+        player.increasePositionBy(diceRoll.sumOfDiceValues());
+
+        String expected = "Paperino rolls 4, 5. Paperino moves from Start to 9. Paperino Wins!!";
+
+        assertThat(responseFactory.buildWinningMessageFor(player, diceRoll)).isEqualTo(expected);
+    }
 }

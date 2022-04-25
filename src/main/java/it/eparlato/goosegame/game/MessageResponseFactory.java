@@ -13,7 +13,28 @@ public class MessageResponseFactory {
         return String.format("players: %s", String.join(", ", getPlayerNames(players)));
     }
 
+    public String playerNotExistingMessage(String playerName) {
+        return String.format("Player %s does not exist. Add it to the Game first.", playerName);
+    }
+
     private List<String> getPlayerNames(Map<String, Player> players) {
         return new ArrayList<>(players.keySet());
+    }
+
+    public String buildMoveMessageFrom(Player player, DiceRoll diceRoll) {
+        return String.format("%s rolls %d, %d. %s moves from %s to %s",
+                player.name(), diceRoll.firstDiceValue(), diceRoll.secondDiceValue(),
+                player.name(), textValueOf(player.getPreviousPosition()), textValueOf(player.getCurrentPosition()));
+    }
+
+    private String textValueOf(Position position) {
+        if (position.value() == 0)
+            return "Start";
+
+        return String.valueOf(position.value());
+    }
+
+    public String buildWinningMessageFor(Player player, DiceRoll diceRoll) {
+        return String.format("%s. %s Wins!!", buildMoveMessageFrom(player, diceRoll), player.name());
     }
 }

@@ -10,6 +10,7 @@ class GooseGameTest {
 
     @BeforeEach
     void setUp() {
+        // TODO: use a mock instead of the real MessageResponseFactory?
         game = new GooseGame(new MessageResponseFactory());
     }
 
