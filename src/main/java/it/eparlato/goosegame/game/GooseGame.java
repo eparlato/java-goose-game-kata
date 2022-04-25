@@ -9,15 +9,20 @@ public class GooseGame {
     public static final int WINNING_POSITION = 63;
     private final Map<String, Player> playersMap = new LinkedHashMap<>();
     private boolean isOver = false;
+    private MessageResponseFactory responseFactory;
+
+    public GooseGame(MessageResponseFactory responseFactory) {
+        this.responseFactory = responseFactory;
+    }
 
     public String addPlayer(String playerName) {
         if (playersMap.containsKey(playerName)) {
-           return String.format("%s: already existing player", playerName);
+            return responseFactory.alreadyExistingPlayerMessage(playerName);
         }
 
         playersMap.put(playerName, new Player(playerName));
 
-        return String.format("players: %s", String.join(", ", getPlayerNames()));
+        return responseFactory.listOfPlayersMessage(playersMap);
     }
 
     public String movePlayer(String playerName, DiceRoll diceRoll) {

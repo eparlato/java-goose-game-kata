@@ -2,6 +2,7 @@ package it.eparlato.goosegame;
 
 import it.eparlato.goosegame.game.DiceRoll;
 import it.eparlato.goosegame.game.GooseGame;
+import it.eparlato.goosegame.game.MessageResponseFactory;
 import it.eparlato.goosegame.io.ConsoleInput;
 import it.eparlato.goosegame.io.ConsoleOutput;
 import it.eparlato.goosegame.io.command.ApplicationCommand;
@@ -57,7 +58,7 @@ public class Application {
 
     public static void main(String[] args) {
         Application application = new Application(new ConsoleInput(System.in), new ConsoleOutput(System.out),
-                new CommandParser(), new GooseGame());
+                new CommandParser(), new GooseGame(new MessageResponseFactory()));
 
         application.run();
     }

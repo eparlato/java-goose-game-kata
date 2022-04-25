@@ -10,7 +10,7 @@ class GooseGameTest {
 
     @BeforeEach
     void setUp() {
-        game = new GooseGame();
+        game = new GooseGame(new MessageResponseFactory());
     }
 
     @Test

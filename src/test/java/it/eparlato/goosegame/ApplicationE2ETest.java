@@ -1,6 +1,7 @@
 package it.eparlato.goosegame;
 
 import it.eparlato.goosegame.game.GooseGame;
+import it.eparlato.goosegame.game.MessageResponseFactory;
 import it.eparlato.goosegame.io.ConsoleInput;
 import it.eparlato.goosegame.io.ConsoleOutput;
 import it.eparlato.goosegame.io.command.CommandParser;
@@ -108,7 +109,7 @@ public class ApplicationE2ETest {
 
         ConsoleInput consoleInput = new ConsoleInput(new ByteArrayInputStream(commandSequence.getBytes(StandardCharsets.UTF_8)));
         ConsoleOutput consoleOutput = new ConsoleOutput(new PrintStream(baos));
-        application = new Application(consoleInput, consoleOutput, commandParser, new GooseGame());
+        application = new Application(consoleInput, consoleOutput, commandParser, new GooseGame(new MessageResponseFactory()));
     }
 
     private void assertThatOutputContains(String output) throws UnsupportedEncodingException {
