@@ -11,4 +11,11 @@ class PositionTest {
 
         assertThat(position.add(3)).isEqualTo(new Position(12));
     }
+
+    @Test
+    void decrements_itself() {
+        Position position = new Position(10);
+
+        assertThat(position.sub(9)).isEqualTo(new Position(1));
+    }
 }

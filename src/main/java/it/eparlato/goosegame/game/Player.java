@@ -7,6 +7,8 @@ public class Player {
     private final String playerName;
     private Position previousPosition = new Position(0);
     private Position currentPosition = new Position(0);
+    private boolean hasBounced = false;
+
 
     public Player(String playerName) {
         this.playerName = playerName;
@@ -17,9 +19,16 @@ public class Player {
     }
 
     public void increasePositionBy(int value) {
+        resetBouncesFlag();
         previousPosition = new Position(currentPosition.value());
 
         currentPosition = currentPosition.add(value);
+
+        if(currentPosition.value() > WINNING_POSITION_VALUE) {
+            hasBounced = true;
+            int numberOfPositionsToGoBack = currentPosition.value() - WINNING_POSITION_VALUE;
+            currentPosition = new Position(WINNING_POSITION_VALUE - numberOfPositionsToGoBack);
+        }
     }
 
     public Position getPreviousPosition() {
@@ -45,5 +54,13 @@ public class Player {
 
     public boolean isOnWinningPosition() {
         return currentPosition.value() == WINNING_POSITION_VALUE;
+    }
+
+    public boolean hasBounced() {
+        return hasBounced;
+    }
+
+    private void resetBouncesFlag() {
+        hasBounced = false;
     }
 }

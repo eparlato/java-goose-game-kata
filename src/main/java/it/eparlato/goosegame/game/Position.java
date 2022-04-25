@@ -17,6 +17,10 @@ public class Position {
         return new Position(this.value + valueToAdd);
     }
 
+    public Position sub(int valueToSub) {
+        return new Position(this.value - valueToSub);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
