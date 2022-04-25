@@ -42,8 +42,8 @@ public class Application {
         return gooseGame;
     }
 
-    public void addPlayer(Player player) {
-        String response = gooseGame.addPlayer(player);
+    public void addPlayer(String playerName) {
+        String response = gooseGame.addPlayer(playerName);
         consoleOutput.show(response);
     }
 

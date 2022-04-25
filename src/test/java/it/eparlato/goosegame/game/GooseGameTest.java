@@ -16,24 +16,24 @@ class GooseGameTest {
 
     @Test
     void adds_a_player() {
-        String response = game.addPlayer(new Player("Bar"));
+        String response = game.addPlayer("Bar");
 
         assertThat(response).isEqualTo("players: Bar");
     }
 
     @Test
     void adds_three_players() {
-        game.addPlayer(new Player("Anakin"));
-        game.addPlayer(new Player("Yoda"));
-        String response = game.addPlayer(new Player("Obiwan"));
+        game.addPlayer("Anakin");
+        game.addPlayer("Yoda");
+        String response = game.addPlayer("Obiwan");
 
         assertThat(response).isEqualTo("players: Anakin, Yoda, Obiwan");
     }
 
     @Test
     void does_not_add_a_player_that_already_exists() {
-        game.addPlayer(new Player("Pluto"));
-        String response = game.addPlayer(new Player("Pluto"));
+        game.addPlayer("Pluto");
+        String response = game.addPlayer("Pluto");
 
         assertThat(response).isEqualTo("Pluto: already existing player");
     }

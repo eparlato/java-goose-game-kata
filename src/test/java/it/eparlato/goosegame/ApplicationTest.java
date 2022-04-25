@@ -27,13 +27,12 @@ public class ApplicationTest {
     void invokes_addPlayer_on_GooseGame_and_shows_its_result() {
         String playerName = "A_Player_Name";
         String response = "players: A_Player_Name";
-        Player aNewPlayer = new Player(playerName);
 
-        when(gooseGame.addPlayer(aNewPlayer)).thenReturn(response);
+        when(gooseGame.addPlayer(playerName)).thenReturn(response);
 
-        application.addPlayer(aNewPlayer);
+        application.addPlayer(playerName);
 
-        verify(gooseGame).addPlayer(aNewPlayer);
+        verify(gooseGame).addPlayer(playerName);
         verify(consoleOutput).show(response);
     }
 

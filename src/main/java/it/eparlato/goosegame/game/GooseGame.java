@@ -8,12 +8,12 @@ import java.util.Map;
 public class GooseGame {
     private final Map<String, Player> playersMap = new LinkedHashMap<>();
 
-    public String addPlayer(Player player) {
-        if (playersMap.containsKey(player.name())) {
-           return String.format("%s: already existing player", player.name());
+    public String addPlayer(String playerName) {
+        if (playersMap.containsKey(playerName)) {
+           return String.format("%s: already existing player", playerName);
         }
 
-        playersMap.put(player.name(), player);
+        playersMap.put(playerName, new Player(playerName));
 
         return String.format("players: %s", String.join(", ", getPlayerNames()));
     }
