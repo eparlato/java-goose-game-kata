@@ -5,7 +5,6 @@ import it.eparlato.goosegame.game.MessageResponseFactory;
 import it.eparlato.goosegame.io.ConsoleInput;
 import it.eparlato.goosegame.io.ConsoleOutput;
 import it.eparlato.goosegame.io.command.CommandParser;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -105,7 +104,6 @@ public class ApplicationE2ETest {
     }
 
     @Test
-    @Disabled
     void a_player_bounces_back_if_it_goes_beyond_63_with_a_roll() throws UnsupportedEncodingException {
         String commandSequence =
                 "add player Pippo\n" +

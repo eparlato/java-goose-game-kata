@@ -60,4 +60,15 @@ class MessageResponseFactoryTest {
 
         assertThat(responseFactory.buildWinningMessageFor(player, diceRoll)).isEqualTo(expected);
     }
+
+    @Test
+    void builds_player_bounces_message() {
+        Player player = new Player("John");
+        DiceRoll roll = new DiceRoll(1, 2);
+        player.increasePositionBy(62);
+        player.increasePositionBy(3);
+
+        String expected = "John rolls 1, 2. John moves from 62 to 63. John bounces! John returns to 61";
+        assertThat(responseFactory.buildPlayerBouncesMessageFor(player, roll)).isEqualTo(expected);
+    }
 }

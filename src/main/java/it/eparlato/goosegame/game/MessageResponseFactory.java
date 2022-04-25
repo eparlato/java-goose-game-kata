@@ -37,4 +37,12 @@ public class MessageResponseFactory {
     public String buildWinningMessageFor(Player player, DiceRoll diceRoll) {
         return String.format("%s. %s Wins!!", buildMoveMessageFrom(player, diceRoll), player.name());
     }
+
+    public String buildPlayerBouncesMessageFor(Player player, DiceRoll roll) {
+        return String.format("%s rolls %d, %d. %s moves from %d to %d. %s bounces! %s returns to %d",
+                player.name(), roll.firstDiceValue(), roll.secondDiceValue(),
+                player.name(), player.getPreviousPosition().value(), Player.WINNING_POSITION_VALUE,
+                player.name(),
+                player.name(), player.getCurrentPosition().value());
+    }
 }
