@@ -1,5 +1,8 @@
-package it.eparlato.goosegame;
+package it.eparlato.goosegame.io.command;
 
+import it.eparlato.goosegame.Application;
+import it.eparlato.goosegame.io.command.ApplicationCommand;
+import it.eparlato.goosegame.io.command.ExitCommand;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.mock;

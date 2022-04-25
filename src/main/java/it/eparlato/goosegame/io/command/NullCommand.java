@@ -1,4 +1,6 @@
-package it.eparlato.goosegame;
+package it.eparlato.goosegame.io.command;
+
+import it.eparlato.goosegame.Application;
 
 public class NullCommand implements ApplicationCommand {
     @Override

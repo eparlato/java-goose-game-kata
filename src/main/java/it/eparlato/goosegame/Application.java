@@ -1,5 +1,12 @@
 package it.eparlato.goosegame;
 
+import it.eparlato.goosegame.io.command.ApplicationCommand;
+import it.eparlato.goosegame.game.GooseGame;
+import it.eparlato.goosegame.game.Player;
+import it.eparlato.goosegame.io.ConsoleInput;
+import it.eparlato.goosegame.io.ConsoleOutput;
+import it.eparlato.goosegame.io.command.CommandParser;
+
 public class Application {
     public static final String EXIT_MESSAGE = "Bye.";
     private final ConsoleInput consoleInput;

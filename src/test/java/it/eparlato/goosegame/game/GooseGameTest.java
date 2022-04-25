@@ -1,5 +1,7 @@
-package it.eparlato.goosegame;
+package it.eparlato.goosegame.game;
 
+import it.eparlato.goosegame.game.GooseGame;
+import it.eparlato.goosegame.game.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

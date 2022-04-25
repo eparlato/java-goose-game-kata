@@ -1,4 +1,9 @@
-package it.eparlato.goosegame;
+package it.eparlato.goosegame.io.command;
+
+import it.eparlato.goosegame.io.command.AddPlayerCommand;
+import it.eparlato.goosegame.io.command.ApplicationCommand;
+import it.eparlato.goosegame.io.command.ExitCommand;
+import it.eparlato.goosegame.io.command.NullCommand;
 
 public class CommandParser {
     public ApplicationCommand buildCommandFromInput(String userInput) {

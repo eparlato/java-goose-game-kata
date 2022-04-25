@@ -1,4 +1,4 @@
-package it.eparlato.goosegame;
+package it.eparlato.goosegame.game;
 
 import java.util.ArrayList;
 import java.util.List;

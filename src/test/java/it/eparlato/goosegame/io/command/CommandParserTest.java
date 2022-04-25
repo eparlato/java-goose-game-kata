@@ -1,4 +1,4 @@
-package it.eparlato.goosegame;
+package it.eparlato.goosegame.io.command;
 
 import org.junit.jupiter.api.Test;
 

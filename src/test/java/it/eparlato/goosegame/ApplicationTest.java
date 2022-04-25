@@ -1,5 +1,10 @@
 package it.eparlato.goosegame;
 
+import it.eparlato.goosegame.game.GooseGame;
+import it.eparlato.goosegame.game.Player;
+import it.eparlato.goosegame.io.ConsoleInput;
+import it.eparlato.goosegame.io.ConsoleOutput;
+import it.eparlato.goosegame.io.command.CommandParser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

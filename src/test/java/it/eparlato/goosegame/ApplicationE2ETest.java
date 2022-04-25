@@ -1,5 +1,9 @@
 package it.eparlato.goosegame;
 
+import it.eparlato.goosegame.game.GooseGame;
+import it.eparlato.goosegame.io.ConsoleInput;
+import it.eparlato.goosegame.io.ConsoleOutput;
+import it.eparlato.goosegame.io.command.CommandParser;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -56,6 +60,7 @@ public class ApplicationE2ETest {
         assertThatOutputContains("players: Pippo");
         assertThatOutputContains("Pippo: already existing player");
     }
+
 
     private void setupApplicationWithCommandSequence(String commandSequence) {
         baos = new ByteArrayOutputStream();
