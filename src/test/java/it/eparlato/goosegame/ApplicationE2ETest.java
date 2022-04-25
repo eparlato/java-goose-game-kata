@@ -5,6 +5,7 @@ import it.eparlato.goosegame.game.MessageResponseFactory;
 import it.eparlato.goosegame.io.ConsoleInput;
 import it.eparlato.goosegame.io.ConsoleOutput;
 import it.eparlato.goosegame.io.command.CommandParser;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -101,6 +102,31 @@ public class ApplicationE2ETest {
         application.run();
 
         assertThatOutputContains("Pippo rolls 1, 2. Pippo moves from 60 to 63. Pippo Wins!!");
+    }
+
+    @Test
+    @Disabled
+    void a_player_bounces_back_if_it_goes_beyond_63_with_a_roll() throws UnsupportedEncodingException {
+        String commandSequence =
+                "add player Pippo\n" +
+                        "add player Pluto\n" +
+                        "move Pippo 6, 6\n" +
+                        "move Pluto 6, 6\n" +
+                        "move Pippo 6, 6\n" +
+                        "move Pluto 6, 6\n" +
+                        "move Pippo 6, 6\n" +
+                        "move Pluto 6, 6\n" +
+                        "move Pippo 6, 6\n" +
+                        "move Pluto 6, 6\n" +
+                        "move Pippo 6, 6\n" +
+                        "move Pluto 6, 6\n" +
+                        "move Pippo 3, 2\n" +
+                        "exit\n";
+        setupApplicationWithCommandSequence(commandSequence);
+
+        application.run();
+
+        assertThatOutputContains("Pippo rolls 3, 2. Pippo moves from 60 to 63. Pippo bounces! Pippo returns to 61");
     }
 
     private void setupApplicationWithCommandSequence(String commandSequence) {

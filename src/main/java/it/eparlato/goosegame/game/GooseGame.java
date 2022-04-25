@@ -4,7 +4,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class GooseGame {
-    public static final int WINNING_POSITION = 63;
     private final Map<String, Player> playersMap = new LinkedHashMap<>();
     private boolean isOver = false;
     private final MessageResponseFactory responseFactory;
@@ -32,7 +31,7 @@ public class GooseGame {
 
         player.increasePositionBy(diceRoll.sumOfDiceValues());
 
-        if (isWinningPosition(player.getCurrentPosition())) {
+        if (player.isOnWinningPosition()) {
             isOver = true;
             return responseFactory.buildWinningMessageFor(player, diceRoll);
         }
@@ -40,12 +39,7 @@ public class GooseGame {
         return responseFactory.buildMoveMessageFrom(player, diceRoll);
     }
 
-    private boolean isWinningPosition(Position position) {
-        return position.value() == WINNING_POSITION;
-    }
-
     public boolean isOver() {
         return isOver;
     }
-
 }

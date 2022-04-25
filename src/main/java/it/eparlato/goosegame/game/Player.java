@@ -3,6 +3,7 @@ package it.eparlato.goosegame.game;
 import java.util.Objects;
 
 public class Player {
+    private static final int WINNING_POSITION_VALUE = 63;
     private final String playerName;
     private Position previousPosition = new Position(0);
     private Position currentPosition = new Position(0);
@@ -40,5 +41,9 @@ public class Player {
     @Override
     public int hashCode() {
         return Objects.hash(playerName);
+    }
+
+    public boolean isOnWinningPosition() {
+        return currentPosition.value() == WINNING_POSITION_VALUE;
     }
 }
