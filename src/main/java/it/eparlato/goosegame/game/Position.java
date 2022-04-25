@@ -17,13 +17,6 @@ public class Position {
         return new Position(this.value + valueToAdd);
     }
 
-    public String tagValue() {
-        if (value == 0)
-            return "Start";
-
-        return String.valueOf(value);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

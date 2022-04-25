@@ -44,7 +44,7 @@ public class GooseGame {
     private String buildMoveMessageFrom(Player player, DiceRoll diceRoll) {
         return String.format("%s rolls %d, %d. %s moves from %s to %s",
                 player.name(), diceRoll.firstDiceValue(), diceRoll.secondDiceValue(),
-                player.name(), player.getPreviousPosition().tagValue(), player.getCurrentPosition().tagValue());
+                player.name(), textValueOf(player.getPreviousPosition()), textValueOf(player.getCurrentPosition()));
     }
 
     private boolean isWinningPosition(Position position) {
@@ -57,5 +57,12 @@ public class GooseGame {
 
     public boolean isOver() {
         return isOver;
+    }
+
+    private String textValueOf(Position position) {
+        if (position.value() == 0)
+            return "Start";
+
+        return String.valueOf(position.value());
     }
 }
