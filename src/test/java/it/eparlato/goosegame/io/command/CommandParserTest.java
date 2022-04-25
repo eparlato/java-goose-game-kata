@@ -21,4 +21,9 @@ class CommandParserTest {
     void builds_NullCommand_when_input_is_not_recognized() {
         assertThat(parser.buildCommandFromInput("")).isInstanceOf(NullCommand.class);
     }
+
+    @Test
+    void builds_MovePlayerCommand() {
+        assertThat(parser.buildCommandFromInput("move Pippo 3, 6")).isEqualTo(new MovePlayerCommand("Pippo", 3, 6));
+    }
 }

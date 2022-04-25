@@ -61,6 +61,22 @@ public class ApplicationE2ETest {
         assertThatOutputContains("Pippo: already existing player");
     }
 
+    @Test
+    @Disabled
+    void move_a_player() throws UnsupportedEncodingException {
+        String commandSequence =
+                "move Pippo 4, 2\n" +
+                "move Pluto 2, 2\n" +
+                "move Pippo 2, 3\n" +
+                "exit\n";
+        setupApplicationWithCommandSequence(commandSequence);
+
+        application.run();
+
+        assertThatOutputContains("Pippo rolls 4, 2. Pippo moves from Start to 6");
+        assertThatOutputContains("Pluto rolls 2, 2. Pluto moves from Start to 4");
+        assertThatOutputContains("Pippo rolls 2, 3. Pippo moves from 6 to 11");
+    }
 
     private void setupApplicationWithCommandSequence(String commandSequence) {
         baos = new ByteArrayOutputStream();
