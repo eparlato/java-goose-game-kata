@@ -52,4 +52,19 @@ class GooseGameTest {
 
         assertThat(response).isEqualTo("Player Paperino does not exist. Add it to the Game first.");
     }
+
+    @Test
+    void quits_itself_and_returns_a_message_if_a_player_wins_after_moving() {
+        game.addPlayer("Pippo");
+
+        game.movePlayer("Pippo", new DiceRoll(6, 6));
+        game.movePlayer("Pippo", new DiceRoll(6, 6));
+        game.movePlayer("Pippo", new DiceRoll(6, 6));
+        game.movePlayer("Pippo", new DiceRoll(6, 6));
+        game.movePlayer("Pippo", new DiceRoll(6, 6));
+        String response = game.movePlayer("Pippo", new DiceRoll(1, 2));
+
+        assertThat(game.isOver()).isTrue();
+        assertThat(response).isEqualTo("Pippo rolls 1, 2. Pippo moves from 60 to 63. Pippo Wins!!");
+    }
 }

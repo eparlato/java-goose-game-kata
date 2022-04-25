@@ -4,7 +4,6 @@ import it.eparlato.goosegame.game.GooseGame;
 import it.eparlato.goosegame.io.ConsoleInput;
 import it.eparlato.goosegame.io.ConsoleOutput;
 import it.eparlato.goosegame.io.command.CommandParser;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -80,7 +79,6 @@ public class ApplicationE2ETest {
     }
 
     @Test
-    @Disabled
     void a_player_wins_the_game_if_it_lands_on_space_63() throws UnsupportedEncodingException {
         String commandSequence =
                 "add player Pippo\n" +

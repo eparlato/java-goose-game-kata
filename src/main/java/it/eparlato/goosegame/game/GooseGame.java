@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 public class GooseGame {
+    public static final int WINNING_POSITION = 63;
     private final Map<String, Player> playersMap = new LinkedHashMap<>();
+    private boolean isOver = false;
 
     public String addPlayer(String playerName) {
         if (playersMap.containsKey(playerName)) {
@@ -27,12 +29,26 @@ public class GooseGame {
 
         player.increasePositionBy(diceRoll.sumOfDiceValues());
 
-        Position previousPosition = player.getPreviousPosition();
-        Position currentPosition = player.getCurrentPosition();
+        String moveMessage = buildMoveMessageFrom(player, diceRoll);
 
+        StringBuilder response = new StringBuilder(moveMessage);
+
+        if (isWinningPosition(player.getCurrentPosition())) {
+            isOver = true;
+            response.append(String.format(". %s Wins!!", player.name()));
+        }
+
+        return response.toString();
+    }
+
+    private String buildMoveMessageFrom(Player player, DiceRoll diceRoll) {
         return String.format("%s rolls %d, %d. %s moves from %s to %s",
                 player.name(), diceRoll.firstDiceValue(), diceRoll.secondDiceValue(),
-                player.name(), previousPosition.tagValue(), currentPosition.tagValue());
+                player.name(), player.getPreviousPosition().tagValue(), player.getCurrentPosition().tagValue());
+    }
+
+    private boolean isWinningPosition(Position position) {
+        return position.value() == WINNING_POSITION;
     }
 
     private List<String> getPlayerNames() {
@@ -40,6 +56,6 @@ public class GooseGame {
     }
 
     public boolean isOver() {
-        return false;
+        return isOver;
     }
 }
