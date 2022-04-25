@@ -20,4 +20,8 @@ public class GooseGame {
     private List<String> getPlayerNames() {
         return players.stream().map(Player::name).collect(Collectors.toList());
     }
+
+    public String movePlayer(Player playerName, int firstDiceValue, int secondDiceValue) {
+        return "";
+    }
 }

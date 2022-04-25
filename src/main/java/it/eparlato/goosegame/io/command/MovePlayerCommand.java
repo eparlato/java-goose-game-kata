@@ -17,7 +17,7 @@ public class MovePlayerCommand implements ApplicationCommand {
 
     @Override
     public void executeOn(Application application) {
-
+        application.movePlayer(playerName, firstDiceValue, secondDiceValue);
     }
 
     @Override

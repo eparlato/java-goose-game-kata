@@ -46,10 +46,16 @@ public class Application {
         consoleOutput.show(response);
     }
 
+    public void movePlayer(String playerName, int firstDiceValue, int secondDiceValue) {
+        String response = gooseGame.movePlayer(new Player(playerName), firstDiceValue, secondDiceValue);
+        consoleOutput.show(response);
+    }
+
     public static void main(String[] args) {
         Application application = new Application(new ConsoleInput(System.in), new ConsoleOutput(System.out),
                 new CommandParser(), new GooseGame());
 
         application.run();
     }
+
 }
